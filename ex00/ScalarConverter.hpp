@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:27:50 by michel_32         #+#    #+#             */
-/*   Updated: 2026/03/31 15:24:35 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/03/31 15:45:03 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 #define SCALARCONVERTER_HPP
 
 #include <string>
+
+enum e_type {
+    CHAR,
+    INT,
+    FLOAT,
+    DOUBLE,
+    SPECIAL, // For nan, inf, etc.
+    INVALID
+};
 
 class ScalarConverter {
 public:
