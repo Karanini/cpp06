@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:37 by michel_32         #+#    #+#             */
-/*   Updated: 2026/03/31 15:12:51 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/03/31 15:26:12 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& copy)
     return (*this);
 }
 
-void ScalarConverter::convert(char *input)
+void  ScalarConverter::convert(const std::string &input)
 {
     
 }
