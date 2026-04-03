@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:37 by michel_32         #+#    #+#             */
-/*   Updated: 2026/04/03 12:33:30 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/04/03 12:57:57 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,7 +150,7 @@ void ScalarConverter::convert(const std::string &input)
 		float f = static_cast<float>(c);
 		double d = static_cast<double>(c);
 
-		std::cout << "char: " << c << std::endl;
+		std::cout << "char: '" << c << "'" << std::endl;
 		std::cout << "int: " << i << std::endl;
 		std::cout << std::fixed << std::setprecision(1); //to print one decimal
 		std::cout << "float: " << f << "f" << std::endl;
@@ -159,16 +159,27 @@ void ScalarConverter::convert(const std::string &input)
 	}
 	case INT:
     {
-        // if (std::isprint(i))
-        // {
-        //     char c = i;
-        //     std::cout << "char: " << c << std::endl;            
-        // }
-        // else
-        //     std::cout << "char: Non displayable" << std::endl; 
-        // std::cout << "int: " << input << std::endl;
-        // // std::cout << "float: " << strtof(input.c_str(), 0) << std::endl;
-		// std::cout << "double: " << d << std::endl;
+		std::stringstream ss(input);
+		int i;
+		if (!(ss >> i))
+			std::cout << "Warning: int overflow. Considering i == (+/-)INT_MAX." << std::endl;
+		float f = static_cast<float>(i);
+		double d = static_cast<double>(i);
+
+        if (i >= 0 && i <= 127 && std::isprint(i))
+        {
+            char c = i;
+            std::cout << "char: '" << c << "'" << std::endl;            
+        }
+        else if (i > 127 || i < 0)
+        std::cout << "char: impossible" << std::endl;
+    	else
+        std::cout << "char: Non displayable" << std::endl;  
+		
+        std::cout << "int: " << i << std::endl;
+        std::cout << std::fixed << std::setprecision(1); //to print one decimal
+		std::cout << "float: " << f << "f" << std::endl;
+		std::cout << "double: " << d << std::endl;
 		break ;
     }
 		
