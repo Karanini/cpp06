@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:37 by michel_32         #+#    #+#             */
-/*   Updated: 2026/04/03 16:40:21 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/04/03 16:44:44 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,19 @@ static e_type	determine_type(const std::string &input)
 	return (input_is_a_double_or_float(input, &start, &point_index));
 }
 
+static void print_char(int i)
+{
+	if (i >= 0 && i <= 127 && std::isprint(i))
+	{
+		char c = static_cast<char>(i);
+		std::cout << "char: '" << c << "'" << std::endl;
+	}
+	else if (i > 127 || i < 0)
+		std::cout << "char: impossible" << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+}
+
 void ScalarConverter::convert(const std::string &input)
 {
 	e_type type;
@@ -167,15 +180,7 @@ void ScalarConverter::convert(const std::string &input)
 		float f = static_cast<float>(i);
 		double d = static_cast<double>(i);
 
-		if (i >= 0 && i <= 127 && std::isprint(i))
-		{
-			char c = static_cast<char>(i);
-			std::cout << "char: '" << c << "'" << std::endl;
-		}
-		else if (i > 127 || i < 0)
-			std::cout << "char: impossible" << std::endl;
-		else
-			std::cout << "char: Non displayable" << std::endl;
+		print_char(i);
 
 		std::cout << "int: " << i << std::endl;
 		std::cout << std::fixed << std::setprecision(1); // to print one decimal
@@ -194,15 +199,7 @@ void ScalarConverter::convert(const std::string &input)
 		i = static_cast<float>(f);
 		d = static_cast<double>(f);
 
-		if (f >= 0 && f <= 127 && std::isprint(f))
-		{
-			char c = static_cast<char>(f);
-			std::cout << "char: '" << c << "'" << std::endl;
-		}
-		else if (f > 127 || f < 0)
-			std::cout << "char: impossible" << std::endl;
-		else
-			std::cout << "char: Non displayable" << std::endl;
+		print_char(i);
 
 		if (f >= INT_MIN && f <= INT_MAX)
 			std::cout << "int: " << i << std::endl;
@@ -222,15 +219,7 @@ void ScalarConverter::convert(const std::string &input)
 		float f = static_cast<float>(d);
 		int i = static_cast<int>(d);
 
-		if (d >= 0 && d <= 127 && std::isprint(i))
-		{
-			char c = static_cast<char>(d);
-			std::cout << "char: '" << c << "'" << std::endl;
-		}
-		else if (d > 127 || d < 0)
-			std::cout << "char: impossible" << std::endl;
-		else
-			std::cout << "char: Non displayable" << std::endl;
+		print_char(i);
 
 		if (d >= INT_MIN && d <= INT_MAX)
 			std::cout << "int: " << i << std::endl;
