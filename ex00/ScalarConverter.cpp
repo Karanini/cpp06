@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:37 by michel_32         #+#    #+#             */
-/*   Updated: 2026/04/03 18:03:57 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/04/03 18:13:13 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ void ScalarConverter::convert(const std::string &input)
 
 	case FLOAT:
 	{
-		float f = std::strtof(input.c_str(), NULL);;
+		float f = std::strtof(input.c_str(), NULL);
 		int i = static_cast<float>(f);
 		double d = static_cast<double>(f);
 
@@ -207,8 +207,18 @@ void ScalarConverter::convert(const std::string &input)
 		break ;
 	}
 	case SPECIAL:
-		std::cout << "special" << std::endl;
+	{
+		if (!input.compare("-inff") || !input.compare("+inff") || !input.compare("nanf"))
+		{
+			float f = std::strtof(input.c_str(), NULL);
+			int i = static_cast<float>(f);
+			double d = static_cast<double>(f);
+
+			print_result(i, f, d);
+			break ;
+		}
 		break ;
+	}
 	case INVALID:
 		std::cout << "invalid input" << std::endl;
 		break ;
