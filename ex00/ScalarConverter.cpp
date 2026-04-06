@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:37 by michel_32         #+#    #+#             */
-/*   Updated: 2026/04/06 12:11:39 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/04/06 15:14:31 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,7 +166,12 @@ void ScalarConverter::convert(const std::string &input)
 		std::stringstream ss(input);
 		int i;
 		if (!(ss >> i))
-			std::cout << "Warning: int overflow. Considering input == (+/-)INT_MAX." << std::endl;
+		{
+			if (i > 0)
+				std::cout << "Warning: int overflow. Considering input == INT_MAX." << std::endl;
+			else
+				std::cout << "Warning: int underflow. Considering input == INT_MIN." << std::endl;
+		}
 		float f = static_cast<float>(i);
 		double d = static_cast<double>(i);
 
