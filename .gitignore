@@ -3,6 +3,7 @@
 
 # Executables
 convert
+serialize
 
 # Core Dumps
 vgcore.*
