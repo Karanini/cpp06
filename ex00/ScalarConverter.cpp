@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:37 by michel_32         #+#    #+#             */
-/*   Updated: 2026/04/06 11:59:24 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/04/06 12:11:39 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <sstream>
 #include <stdlib.h>
 #include <string>
+#include <cmath>
+
 
 ScalarConverter::ScalarConverter(void)
 {
@@ -96,10 +98,12 @@ static e_type	determine_type(const std::string &input)
 	start = 0;
 	if (input.empty())
 		return (INVALID);
-	if (!input.compare("-inff") || !input.compare("inff")
-		|| !input.compare("-inf") || !input.compare("+inf")
-		|| !input.compare("nanf") || !input.compare("nan"))
-		return (SPECIAL);
+	if (!input.compare("-inff") || !input.compare("+inff")
+		|| !input.compare("nanf"))
+		return (FLOAT);
+	if (!input.compare("-inf") || !input.compare("+inf")
+		|| !input.compare("nan"))
+		return (DOUBLE);
 	if (input.size() == 1 && !std::isdigit(input[0]))
 		return (CHAR);
 	if (input[start] == '+' || input[start] == '-')
@@ -129,8 +133,14 @@ static void print_result(int i, float f, double d)
 	else
 		std::cout << "int: impossible" << std::endl;
 	std::cout << std::fixed << std::setprecision(1); // to print one decimal
-	std::cout << "float: "  << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	if (std::isinf(f) && f > 0)
+		std::cout << "float: +"  << f << "f" << std::endl;
+	else
+		std::cout << "float: "  << f << "f" << std::endl;
+	if (std::isinf(d) && d > 0)
+		std::cout << "double: +" << d << std::endl;
+	else
+		std::cout << "double: " << d << std::endl;
 }
 
 void ScalarConverter::convert(const std::string &input)
@@ -180,19 +190,6 @@ void ScalarConverter::convert(const std::string &input)
 		int i = static_cast<int>(d);
 
 		print_result(i, f, d);
-		break ;
-	}
-	case SPECIAL:
-	{
-		if (!input.compare("-inff") || !input.compare("+inff") || !input.compare("nanf"))
-		{
-			float f = std::strtof(input.c_str(), NULL);
-			int i = static_cast<float>(f);
-			double d = static_cast<double>(f);
-
-			print_result(i, f, d);
-			break ;
-		}
 		break ;
 	}
 	case INVALID:
