@@ -6,7 +6,7 @@
 /*   By: michel_32 <michel_32@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/31 14:26:37 by michel_32         #+#    #+#             */
-/*   Updated: 2026/04/03 18:13:13 by michel_32        ###   ########.fr       */
+/*   Updated: 2026/04/06 11:59:24 by michel_32        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,30 +64,6 @@ static bool	input_is_an_int(const std::string &input, long unsigned int *start)
 		return (true);
 	return (false);
 }
-
-// static bool	input_is_a_double(const std::string &input,
-// 		long unsigned int *start, long unsigned int *point_index)
-// {
-// 	if (input.find_first_not_of("0123456789", *start) == *point_index)
-// 		*start = *point_index + 1;
-// 	else
-// 		return (false);
-// 	if (input.find_first_not_of("0123456789", *start) == std::string::npos)
-// 		return (true);
-// 	else
-// 		return (false);
-// }
-
-// static bool	input_is_a_float(const std::string &input,
-		// long unsigned int *start)
-// {
-// 	if (get_single_char_index(input, 'f') != input.size() - 1)
-// 		return (std::cout << "f not good place\n", false);
-// 	if (input.find_first_not_of("0123456789", *start) == input.size() - 1)
-// 		return (true);
-// 	else
-// 		return (false);
-// }
 
 static e_type	input_is_a_double_or_float(const std::string &input,
 		long unsigned int *start, long unsigned int *point_index)
