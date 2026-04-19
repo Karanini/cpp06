@@ -6,11 +6,14 @@
 /*   By: bkaras-g <bkaras-g@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/06 17:11:18 by michel_32         #+#    #+#             */
-/*   Updated: 2026/04/19 16:24:36 by bkaras-g         ###   ########.fr       */
+/*   Updated: 2026/04/19 16:38:41 by bkaras-g         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 Base::~Base(void)
 {
